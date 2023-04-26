@@ -14,11 +14,24 @@ public class DANI extends PApplet {
 	}
 
     String[] sonnet;
+	String[] words;
 
     public String[] writeSonnet()
     {
         return null;
     }
+
+	public void loadFile()
+	{
+		sonnet = loadStrings("sonnet.txt");
+		words = split(sonnet[0], ' ');
+		for (int i = 0; i < words.length; i++)
+		{
+			words[i] = words[i].replaceAll("[^\\w\\s]", "");
+			words[i] = words[i].toLowerCase();
+		}
+	}
+
 
 	public void setup() {
 		colorMode(HSB);

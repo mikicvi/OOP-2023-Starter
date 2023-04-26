@@ -32,6 +32,22 @@ public class DANI extends PApplet {
 		}
 	}
 
+	public String findWord(String word)
+	{
+		for (int i = 0; i < words.length; i++)
+		{
+			if (words[i].equals(word))
+			{
+				if (i < words.length - 1)
+				{
+					String nextWord = words[i + 1];
+					return nextWord;
+				}
+			}
+		}
+		return null;
+	}
+
 
 	public void setup() {
 		colorMode(HSB);

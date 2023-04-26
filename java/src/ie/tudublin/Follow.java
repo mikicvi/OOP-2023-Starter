@@ -16,7 +16,7 @@ public class Follow {
         return word + ": " + count;
     }
     
-    
+    //getters and setters below
     public String getWord() {
         return word;
     }

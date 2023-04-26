@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
-public class DANI extends PApplet {
+public class DANI extends PApplet 
+{
 	
 	ArrayList<Word> model = new ArrayList<Word>();
 	String sonet[];
 	
 	
-	public void settings() {
+	public void settings() 
+	{
 		size(1000, 1000);
 	}
-	public void setup() {
+	public void setup() 
+	{
 		colorMode(HSB);
 
 		loadFile("java/data/small.txt");
@@ -60,18 +63,23 @@ public class DANI extends PApplet {
 
 	public Word findWord(String word)
 	{
-		for (Word w : model) {
-			if (w.getWord().equals(word)) {
+		for (Word w : model) 
+		{
+			if (w.getWord().equals(word)) 
+			{
 				return w;
 			}
 		}
 		return null;
 	}
 
-	public void printModel() {
-		for (Word word : model) {
+	public void printModel() 
+	{
+		for (Word word : model) 
+		{
 			System.out.print(word.getWord() + ": ");
-			for (Follow follow : word.getFollow()) {
+			for (Follow follow : word.getFollow()) 
+			{
 				System.out.print(follow.getWord() + "(" + follow.getCount() + ") ");
 			}
 			System.out.println();
@@ -80,7 +88,8 @@ public class DANI extends PApplet {
 
 
 
-	public void keyPressed() {
+	public void keyPressed() 
+	{
 
 	}
 

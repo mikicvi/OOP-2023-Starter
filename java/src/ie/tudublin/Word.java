@@ -9,7 +9,8 @@ public class Word {
     private ArrayList<Follow> follow;
 
     
-    public Word(String word, ArrayList<Follow> follow) {
+    public Word(String word, ArrayList<Follow> follow) 
+    {
         this.word = word;
         this.follow = new ArrayList<Follow>();
     }
@@ -29,9 +30,11 @@ public class Word {
 
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         String s = word + ": ";
-        for (Follow f : follow) {
+        for (Follow f : follow) 
+        {
             s += f.toString() + ", ";
         }
         return s;
@@ -39,19 +42,23 @@ public class Word {
 
 
     // getters and setters below
-    public String getWord() {
+    public String getWord() 
+    {
         return word;
     }
 
-    public void setWord(String word) {
+    public void setWord(String word) 
+    {
         this.word = word;
     }
 
-    public ArrayList<Follow> getFollow() {
+    public ArrayList<Follow> getFollow() 
+    {
         return follow;
     }
 
-    public void setFollow(ArrayList<Follow> follow) {
+    public void setFollow(ArrayList<Follow> follow) 
+    {
         this.follow = follow;
     }
 

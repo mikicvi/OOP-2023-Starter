@@ -8,10 +8,9 @@ public class DANI extends PApplet
 {
 	
 	ArrayList<Word> model = new ArrayList<Word>();
-	String sonet[];
+	String sonnet[];
 
-	float x = width / 2;
-	float y = height / 2;
+
 	
 	
 	public void settings() 
@@ -26,7 +25,7 @@ public class DANI extends PApplet
 		loadFile("java/data/shakespere.txt");
 		printModel();
 
-		sonet = writeSonnet();
+		sonnet = writeSonnet();
 	}
 	
     public String[] writeSonnet()
@@ -111,11 +110,18 @@ public class DANI extends PApplet
 
 
 
-	public void keyPressed() 
-	{
+	public void keyPressed() {
 
+		if (key == ' ') {
+
+			sonnet = writeSonnet();
+
+			// for (int i = 0; i < sonnet.length; i++) {
+			// 	System.out.println(sonnet[i]);
+			// }
+			redraw();
+		}
 	}
-
 	float off = 0;
 
 	public void draw() 
@@ -126,11 +132,13 @@ public class DANI extends PApplet
 		textSize(20);
         textAlign(CENTER, CENTER);
 
-		float gap = height  / 20;
+		float x = width / 2;
+		float y = height / 2;
+		float gap = height  / 40;
 
-		for (int i = 0; i < sonet.length; i++)
+		for (int i = 0; i < sonnet.length; i++)
 		{
-			text(sonet[i], x,y);
+			text(sonnet[i], x,y);
 			y += gap;
 		}
 

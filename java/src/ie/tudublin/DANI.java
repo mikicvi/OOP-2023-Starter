@@ -35,7 +35,7 @@ public class DANI extends PApplet
 		{
 			String sLine = "";
 			Word currentWord = model.get((int) random(model.size()));
-			for (int j = 0; j < 8; j++)  //
+			for (int j = 0; j < 8; j++)  // 8 words in a line if possible
 			{
 				ArrayList<Follow> follows = currentWord.getFollow(); // get the follows, if there are none, break
 				if (follows.size() == 0) 
@@ -134,7 +134,7 @@ public class DANI extends PApplet
         textAlign(CENTER, CENTER);
 
 		float x = width / 2;
-		float y = (height / 2) - 200;
+		float y = (height / 2) - 200; // offset the initial y position so the sonnet is centered
 		float gap = height  / 40;
 
 		for (int i = 0; i < sonnet.length; i++)

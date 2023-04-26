@@ -134,7 +134,7 @@ public class DANI extends PApplet
         textAlign(CENTER, CENTER);
 
 		float x = width / 2;
-		float y = height / 2;
+		float y = (height / 2) - 200;
 		float gap = height  / 40;
 
 		for (int i = 0; i < sonnet.length; i++)

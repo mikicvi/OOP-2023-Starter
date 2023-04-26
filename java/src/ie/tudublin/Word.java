@@ -24,6 +24,7 @@ public class Word {
                 return;
             }
         }
+        follow.add(new Follow(nextWord2, 1));
     }
 
 

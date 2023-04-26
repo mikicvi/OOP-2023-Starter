@@ -17,7 +17,7 @@ public class Word {
 
     public void findFollow(String nextWord2)
     {
-        for (int i = 0; i < follow.size(); i++) 
+        for (int i = 0; i < follow.size(); i++)  // if the word is already in the follow array, increase the count by 1
         {
             if(follow.get(i).getWord().equals(nextWord2))
             {
@@ -25,7 +25,7 @@ public class Word {
                 return;
             }
         }
-        follow.add(new Follow(nextWord2, 1));
+        follow.add(new Follow(nextWord2, 1)); // if the word is not in the follow array, add it
     }
 
 

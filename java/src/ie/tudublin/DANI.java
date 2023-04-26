@@ -30,21 +30,22 @@ public class DANI extends PApplet
 	
     public String[] writeSonnet()
     {
-		String[] sonnet = new String[14];
+		String[] sonnet = new String[14]; // 14 lines in a sonnet
 		for (int i = 0; i < sonnet.length; i++) 
 		{
 			String sLine = "";
 			Word currentWord = model.get((int) random(model.size()));
-			for (int j = 0; j < 7; j++) 
+			for (int j = 0; j < 8; j++)  //
 			{
-				ArrayList<Follow> follows = currentWord.getFollow();
+				ArrayList<Follow> follows = currentWord.getFollow(); // get the follows, if there are none, break
 				if (follows.size() == 0) 
 				{
 					break;
 				}
-				Follow follow = follows.get((int) random(follows.size()));	
+
+				Follow follow = follows.get((int) random(follows.size()));	// get a random follow
 				sLine += " " + follow.getWord();
-				currentWord = findWord(follow.getWord());
+				currentWord = findWord(follow.getWord()); // find the next word
 			}
 			sonnet[i] = sLine;
 		}
@@ -54,30 +55,30 @@ public class DANI extends PApplet
 	public void loadFile(String fname)
 	{
 		String[] lines = loadStrings(fname);
-		for (String line : lines) 
+		for (String line : lines)
 		{
 			String[] words = split(line, ' ');
 			for (int i = 0; i < words.length; i++) 
 			{
 				String w = words[i].replaceAll("[^\\w\\s]", "").toLowerCase();
-				if (w.length() == 0) 
+				if (w.length() == 0)  // skip empty words
 				{
 					continue;
 				}
 				Word word = findWord(w);
-				if (word == null) 
+				if (word == null)  // word not found
 				{
 					word = new Word(w, null);
 					model.add(word);
 				}
-				if (i < words.length - 1) 
+				if (i < words.length - 1)  // not the last word
 				{
 					String nextW = words[i + 1].replaceAll("[^\\w\\s]", "").toLowerCase();
 					if (nextW.length() == 0) 
 					{
 						continue;
 					}
-					word.findFollow(nextW);
+					word.findFollow(nextW); // find the follow
 				}
 			}
 		}
@@ -87,7 +88,7 @@ public class DANI extends PApplet
 	{
 		for (Word w : model) 
 		{
-			if (w.getWord().equals(word)) 
+			if (w.getWord().equals(word)) // if the word is found
 			{
 				return w;
 			}
@@ -95,9 +96,9 @@ public class DANI extends PApplet
 		return null;
 	}
 
-	public void printModel() 
+	public void printModel()  
 	{
-		for (Word word : model) 
+		for (Word word : model)  
 		{
 			System.out.print(word.getWord() + ": ");
 			for (Follow follow : word.getFollow()) 
@@ -116,7 +117,7 @@ public class DANI extends PApplet
 
 			sonnet = writeSonnet();
 
-			// for (int i = 0; i < sonnet.length; i++) {
+			// for (int i = 0; i < sonnet.length; i++) { // for testing only
 			// 	System.out.println(sonnet[i]);
 			// }
 			redraw();

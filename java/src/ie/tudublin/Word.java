@@ -6,40 +6,24 @@ public class Word {
 
     private String word;
 
-    private ArrayList<Follow> follow = new ArrayList<Follow>();
+    private ArrayList<Follow> follow;
 
     
     public Word(String word, ArrayList<Follow> follow) {
         this.word = word;
-        this.follow = follow;
+        this.follow = new ArrayList<Follow>();
     }
 
-    public String findFollow(String[] words)
+    public void findFollow(String nextWord2)
     {
-        for (int i = 0; i < words.length; i++)
+        for (int i = 0; i < follow.size(); i++) 
         {
-            if (words[i].equals(word))
+            if(follow.get(i).getWord().equals(nextWord2))
             {
-                if (i < words.length - 1)
-                {
-                    String nextWord = words[i + 1];
-                    boolean found = false;
-                    for (Follow f : follow)
-                    {
-                        if (f.getWord().equals(nextWord))
-                        {
-                            f.setCount(f.getCount() + 1);
-                            found = true;
-                        }
-                    }
-                    if (!found)
-                    {
-                        follow.add(new Follow(nextWord, 1));
-                    }
-                }
+                follow.get(i).setCount(follow.get(i).getCount() + 1);
+                return;
             }
         }
-        return null;
     }
 
 

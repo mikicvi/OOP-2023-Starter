@@ -13,7 +13,7 @@ public class Follow {
 
     @Override
     public String toString() {
-        return word + ": " + count;
+        return word + "(" + count + ")";
     }
     
     //getters and setters below

@@ -9,6 +9,9 @@ public class DANI extends PApplet
 	
 	ArrayList<Word> model = new ArrayList<Word>();
 	String sonet[];
+
+	float x = width / 2;
+	float y = height / 2;
 	
 	
 	public void settings() 
@@ -19,14 +22,34 @@ public class DANI extends PApplet
 	{
 		colorMode(HSB);
 
-		loadFile("java/data/small.txt");
-		//loadFile("java/data/shakespere.txt");
+		//loadFile("java/data/small.txt");
+		loadFile("java/data/shakespere.txt");
 		printModel();
+
+		sonet = writeSonnet();
 	}
 	
     public String[] writeSonnet()
     {
-        return null;
+		String[] sonnet = new String[14];
+		for (int i = 0; i < sonnet.length; i++) 
+		{
+			String sLine = "";
+			Word currentWord = model.get((int) random(model.size()));
+			for (int j = 0; j < 7; j++) 
+			{
+				ArrayList<Follow> follows = currentWord.getFollow();
+				if (follows.size() == 0) 
+				{
+					break;
+				}
+				Follow follow = follows.get((int) random(follows.size()));	
+				sLine += " " + follow.getWord();
+				currentWord = findWord(follow.getWord());
+			}
+			sonnet[i] = sLine;
+		}
+		return sonnet;
     }
 
 	public void loadFile(String fname)
@@ -102,6 +125,16 @@ public class DANI extends PApplet
 		noStroke();
 		textSize(20);
         textAlign(CENTER, CENTER);
+
+		float gap = height  / 20;
+
+		for (int i = 0; i < sonet.length; i++)
+		{
+			text(sonet[i], x,y);
+			y += gap;
+		}
+
+
 		
 	}
 }

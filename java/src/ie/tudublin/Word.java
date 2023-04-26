@@ -42,7 +42,7 @@ public class Word {
         return null;
     }
 
-    // toString Method that will iterate through the follows ArrayList
+
     @Override
     public String toString() {
         String s = word + ": ";
